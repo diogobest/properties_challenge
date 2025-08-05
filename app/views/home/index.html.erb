@@ -1,0 +1,22 @@
+<div class="properties-grid">
+  <% @properties.each_with_index do |property, p_index| %>
+    <div class="property-card slider">
+      <div class="slides">
+        <% property.photos.each_with_index do |photo, index| %>
+          <input type="radio" name="slide-<%= p_index %>" id="p<%= p_index %>-slide<%= index %>" <%= "checked" if index == 0 %>>
+          <div class="slide">
+            <%= image_tag photo, class: "card-cover" %>
+          </div>
+        <% end %>
+      </div>
+      <div class="navigation">
+        <% property.photos.each_with_index do |_, index| %>
+          <label for="p<%= p_index %>-slide<%= index %>"></label>
+        <% end %>
+      </div>
+      <div class="card-info">
+        <h3><%= property.name %></h3>
+      </div>
+    </div>
+  <% end %>
+</div>

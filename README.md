@@ -28,8 +28,10 @@ docker-compose run -u root--rm --service-ports web bash
 #### Gems installed for the challenge:
 
 - rspec
+- image_processing (for active storage)
 
 #### Comments
 
 - I am using the new rails 8 way of doing things, I only added the app to the compose. After running the app you can change the RAILS_ENV or stay with the production environment.
 - I disabled the force_ssl to avoid the redirection to https. To make it work I would need to configure nginx to handle the request and I think it is not necessary for this challenge.
+- The project is running with PRODUCTION VARIABLE (if you are using docker), remember to run bundle exec rails assets:precompile && rails s -b 0.0.0.0
