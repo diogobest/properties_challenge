@@ -14,6 +14,11 @@ or if you prefer to execute the web server manually:
 docker compose run --rm --service-ports web bash
 ```
 
+- Exec the container as root:
+
+```bash
+docker-compose run -u root--rm --service-ports web bash 
+```
 
 #### Technology Stack
 
@@ -22,4 +27,8 @@ docker compose run --rm --service-ports web bash
 
 #### Gems installed for the challenge:
 
-- none
+- rspec
+
+#### Comments
+
+- I am using the new rails 8 way of doing things, I only added the app to the compose. After running the app you can change the RAILS_ENV or stay with the production environment.
