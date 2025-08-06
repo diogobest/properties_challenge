@@ -1,6 +1,9 @@
-<div class="properties-grid">
+<%= render "shared/header" %>
+<%= render "property_details" %>
+
+<div id="property-cards" class="properties-grid">
   <% @properties.each_with_index do |property, p_index| %>
-    <div class="property-card slider">
+    <div class="property-card slider" data-property-id="<%= property.id %>" style="display:none;">
       <div class="slides">
         <% property.photos.each_with_index do |photo, index| %>
           <input type="radio" name="slide-<%= p_index %>" id="p<%= p_index %>-slide<%= index %>" <%= "checked" if index == 0 %>>
@@ -8,14 +11,20 @@
             <%= image_tag photo, class: "card-cover" %>
           </div>
         <% end %>
-      </div>
-      <div class="navigation">
-        <% property.photos.each_with_index do |_, index| %>
-          <label for="p<%= p_index %>-slide<%= index %>"></label>
-        <% end %>
+        <div class="controls">
+          <% property.photos.each_with_index do |_, index| %>
+            <label for="p<%= p_index %>-slide<%= index %>"></label>
+          <% end %>
+        </div>
       </div>
       <div class="card-info">
-        <h3><%= property.name %></h3>
+        <small><%= property.state %> · <%= property.city %></small>
+        <p class="address"><%= property.address %></p>
+
+        <div class="card-footer">
+          <span class="value">$<%= number_with_delimiter(property.value) %></span>
+          <span class="date-box"><%= property.available_date.strftime("%d %b %Y") %></span>
+        </div>
       </div>
     </div>
   <% end %>

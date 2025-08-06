@@ -1,0 +1,14 @@
+<div id="property-details" class="property-details">
+  <% @properties.each do |property| %>
+    <div class="property-detail" data-property-id="<%= property.id %>" style="display:none;">
+      <div class="property-detail-left">
+        <%= image_tag property.photos.first, class: "cover-image" if property.photos.attached? %>
+      </div>
+      <div class="property-detail-right">
+        <h2><%= property.name %></h2>
+        <p><%= property.description %></p>
+      </div>
+    </div>
+  <% end %>
+</div>
+

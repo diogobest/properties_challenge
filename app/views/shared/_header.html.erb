@@ -1,0 +1,15 @@
+<div class="topbar-wrapper">
+  <button class="scroll-btn prev">&lt;</button>
+  
+  <nav class="topbar">
+    <ul>
+      <% @properties.each do |property| %>
+        <li>
+          <a href="#" data-property-id="<%= property.id %>"><%= property.name %></a>
+        </li>
+      <% end %>
+    </ul>
+  </nav>
+
+  <button class="scroll-btn next">&gt;</button>
+</div>

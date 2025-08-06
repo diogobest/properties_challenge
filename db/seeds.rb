@@ -8,6 +8,8 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+an_amazing_description = "Located in the heart of Vila Olímpia, GO 850 combines comfort, leisure, and convenience. With a pool, beach tennis court, sauna, and gourmet space, the shared areas are perfect for relaxation and connection. Additionally, its proximity to restaurants, gyms, and offices makes this building ideal for those seeking quality of life in one of São Paulo's most vibrant neighborhoods."
+
 images = Dir[Rails.root.join("public/images/*.jpg")]
 
 [
@@ -71,7 +73,13 @@ images = Dir[Rails.root.join("public/images/*.jpg")]
   "Condomínio Edifício Praia do Leste",
   "Condomínio Edifício Praia do Rosa"
 ].each do |property_name|
-  property = Property.find_or_create_by(name: property_name)
+  property = Property.find_or_create_by(name: property_name,
+                                        description: an_amazing_description,
+                                        address: "Avenida Paulista, 1000, São Paulo, SP",
+                                        value: rand(100_000..1_000_000),
+                                        state: "São Paulo",
+                                        city: "São Paulo",
+                                        available_date: Date.today + rand(1..30).days)
 
   rand(3..5).times do
     image_file = images.sample

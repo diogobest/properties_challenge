@@ -1,0 +1,67 @@
+
+/* Horizontal nav bar */
+.topbar {
+  background: #f7f7f7;
+  padding: 10px 0;
+  overflow-x: hidden;
+  flex: 1;
+}
+
+.topbar ul {
+  display: flex;
+  gap: 15px;
+  list-style: none;
+  padding: 0 20px;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.topbar li {
+  flex-shrink: 0;
+}
+
+.topbar a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.topbar a:hover {
+  color: #000;
+  text-decoration: underline;
+}
+
+.topbar-wrapper {
+  display: flex;
+  align-items: center;
+  background: #f7f7f7;
+  border-bottom: 1px solid #ddd;
+  padding: 5px 0;
+}
+
+.scroll-btn {
+  background: white;
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.scroll-btn:hover {
+  background: #eee;
+}
+
+.topbar ul {
+  display: flex;
+  gap: 15px;
+  list-style: none;
+  padding: 0 10px;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.topbar li:not(:last-child)::after {
+  content: "|";
+  margin-left: 15px;
+  color: #999; /* lighter gray */
+}

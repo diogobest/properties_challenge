@@ -5,12 +5,12 @@ RSpec.describe Property, type: :model do
     it 'has many photos' do
       # arrange
       property = Property.create(name: 'Test Property')
-      photo = Photo.create(image_url: 'http://example.com/photo1.jpg', property: property)
-      photo2 = Photo.create(image_url: 'http://example.com/photo2.jpg', property: property)
 
       # act
-      property.photos << photo
-      property.photos << photo2
+      property.photos.attach(io: File.open("spec/fixtures/image1.jpg"),
+                             filename: 'mockfile.jpg')
+      property.photos.attach(io: File.open("spec/fixtures/image1.jpg"),
+                             filename: 'mockfile2.jpg')
 
       # assert
       expect(property.photos.count).to eq(2)
@@ -18,7 +18,7 @@ RSpec.describe Property, type: :model do
   end
 
   describe 'validations' do
-    it 'has a name' do
+    it 'shows errors when name is not informed' do
       # arrange
       property = Property.new
 
